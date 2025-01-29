@@ -1,8 +1,78 @@
 body {
+  font-family: sans-serif;
+}
+
+h1 {
+  color: red;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr); /* Create a 10-column grid with equal-width columns */
+  grid-gap: 0; /* Remove gaps between grid cells */
+  background-color: dodgerblue;
+  padding: 0; /* Remove padding to make the grid cells touch the edges */
+}
+
+.container > div {
+  background-color: #f1f1f1;
+  border: 1px solid black;
+  padding: 0; /* Remove padding to make the grid cells touch the edges */
+  font-size: 30px;
+  text-align: center;
+  aspect-ratio: 1; /* Mabody {
     font-family: sans-serif;
+    margin: 0; /* Remove default margin */
+    height: 100vh; /* Make the body full-screen height */
+    display: flex; /* Use flexbox to center the grid */
+    justify-content: center; /* Center the grid horizontally */
+    align-items: center; /* Center the grid vertically */
+    background-color: #f1f1f1; /* Set a background color */
   }
   
-  h1 {
-    color: red;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* Create a 10-column grid with equal-width columns */
+    grid-gap: 0; /* Remove gaps between grid cells */
+    background-color: dodgerblue; /* Set a background color for the grid */
+    padding: 0; /* Remove padding to make the grid cells touch the edges */
+    width: 80vw; /* Set the grid width to 80% of the viewport width */
+    height: 80vh; /* Set the grid height to 80% of the viewport height */
   }
   
+  .grid > div {
+    background-color: #fff; /* Set a background color for the grid cells */
+    border: 1px solid black; /* Add a border to the grid cells */
+    padding: 0; /* Remove padding to make the grid cells touch the edges */
+    font-size: 30px; /* Set a font size for the grid cells */
+    text-align: center; /* Center the text in the grid cells body {
+      font-family: sans-serif;
+      margin: 0; /* Remove default margin */
+      height: 100vh; /* Make the body full-screen height */
+      display: flex; /* Use flexbox to center the grid */
+      justify-content: center; /* Center the grid horizontally */
+      align-items: center; /* Center the grid vertically */
+      background-color: #f1f1f1; /* Set a background color */
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr); /* Create a 10-column grid with equal-width columns */
+      grid-gap: 0; /* Remove gaps between grid cells */
+      background-color: dodgerblue; /* Set a background color for the grid */
+      padding: 0; /* Remove padding to make the grid cells touch the edges */
+      width: 40vw; /* Set the grid width to 40% of the viewport width */
+      height: 40vh; /* Set the grid height to 40% of the viewport height */
+    }
+    
+    .grid > div {
+      background-color: #fff; /* Set a background color for the grid cells */
+      border: 1px solid black; /* Add a border to the grid cells */
+      padding: 0; /* Remove padding to make the grid cells touch the edges */
+      font-size: 30px; /* Set a font size for the grid cells */
+      text-align: center; /* Center the text in the grid cells */
+      aspect-ratio: 1; /* Make the grid cells square */
+    }*/
+    aspect-ratio: 1; /* Make the grid cells square */
+  }ke the grid cells square */
+}
