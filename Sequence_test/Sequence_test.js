@@ -70,7 +70,7 @@ const gameConfig = {
       // Allow the player to start clicking after the sequence has been shown
       setTimeout(() => {
         gameState.playerTurn = true;
-      }, delay + 400);
+      }, delay + 50);
     },
   
     handleButtonClick: function(event) {
@@ -95,7 +95,7 @@ const gameConfig = {
             gameState.playerProgress = [];
             gameState.score++;
             domElements.scoreElement.textContent = gameState.score;
-            setTimeout(gameFunctions.generateSequence, 1000);
+            setTimeout(gameFunctions.generateSequence, 200);
           }
         } else {
           // If it's not, turn the button red and end the game
