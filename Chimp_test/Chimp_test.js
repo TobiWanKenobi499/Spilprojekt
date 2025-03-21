@@ -1,101 +1,63 @@
-/**
- * Represents a Button in the grid.
- */
+//Represents a Button in the grid.
 class Button {
-    /**
-     * Constructs a new Button instance.
-     *
-     * grid - The grid to which the button will be appended.
-     * buttonSize - The size of the button.
-     * index - The index of the button in the grid.
-     */
-    constructor(grid, buttonSize, index) {
-        /**
-         * The grid to which the button will be appended.
-         */
+     // Constructor - Constructs a new Button instance.
+     // grid - The grid to which the button will be appended.
+     // buttonSize - The size of the button.
+     // index - The index of the button in the grid.
+    constructor(grid, buttonSize) {
+        //The grid to which the button will be appended.
         this.grid = grid;
 
-        /**
-         * The size of the button.
-         */
+        //The size of the button.
         this.buttonSize = buttonSize;
 
-        /**
-         * The index of the button in the grid.
-         */
-        this.index = index;
-
-        /**
-         * The element of the button.
-         */
+        //The element of the button.
         this.element = document.createElement('div');
         this.element.className = 'button';
 
-        /**
-         * The width of the button element.
-         */
+        //The width of the button element.
         this.element.style.width = `${buttonSize}px`;
 
-        /**
-         * The height of the button element.
-         */
+        //The height of the button element.
         this.element.style.height = `${buttonSize}px`;
 
-        /**
-         * Appends the button element to the grid.
-         */
+        //Appends the button element to the grid.
         this.grid.appendChild(this.element);
     }
 
-    /**
-     * Adds an event listener to the button element.
-     * The event type to listen for.
-     * The function to execute when the event occurs.
-     */
+    
+     // Adds an event listener to the button element.
+     // The event type to listen for.
+     // The function to execute when the event occurs.
+
     addEventListener(eventName, callback) {
         this.element.addEventListener(eventName, callback);
     }
 }
 
 class Game {
-    /**
-     * Constructs a new Game instance.
-     */
+    //Constructs a new Game instance.
     constructor(gridSize, buttonSize) {
-        /**
-         * The size of the grid (number of rows/columns).
-         */
+        //The size of the grid (number of rows/columns).
         this.gridSize = gridSize;
 
-        /**
-         * The size of each button in the grid.
-         */
+        //The size of each button in the grid.
         this.buttonSize = buttonSize;
 
-        /**
-         * The grid DOM element that holds the buttons.
-         */
+        //The grid DOM element that holds the buttons.
         this.grid = document.getElementById('grid');
 
-        /**
-         * An array that holds all button instances in the game.
-         */
+        //An array that holds all button instances in the game.
         this.buttons = [];
 
-        /**
-         * The sequence of numbers to be recalled by the player.
-         */
+        //The sequence of numbers to be recalled by the player.
         this.sequence = [];
 
-        /**
-         * The player's recalled sequence of numbers.
-         */
+        //The player's recalled sequence of numbers.
         this.recallSequence = [];
 
-        /**
-         * The current level of the game.
-         */
-        this.level = 1;
+        //The current level of the game.
+        this.level = 4;
 
         // Create buttons and append them to the grid
         this.createButtons();
@@ -110,25 +72,24 @@ class Game {
         this.addEventListeners();
     }
 
-    /**
-     * Creates buttons and appends them to the grid.
-     * The number of buttons created is equal to the square of the grid size.
-     *
-     * The buttons are stored in an array and are accessible via the `buttons` property.
-     */
+    
+     // Creates buttons and appends them to the grid.
+     // The number of buttons created is equal to the square of the grid size.
+     // The buttons are stored in an array and are accessible via the `buttons` property.
+    
     createButtons() {
         // Create the buttons and store them in an array
         for (let i = 0; i < this.gridSize * this.gridSize; i++) {
-            const button = new Button(this.grid, this.buttonSize, i);
+            const button = new Button(this.grid, this.buttonSize);
             this.buttons.push(button);
         }
     }
 
-    /**
-     * Generates a new sequence of numbers based on the current game level.
-     * The sequence starts from 1 to the current level value.
-     * After generating the sequence, it is randomized for gameplay.
-     */
+    
+     // Generates a new sequence of numbers based on the current game level.
+     // The sequence starts from 1 to the current level value.
+     // After generating the sequence, it is randomized for gameplay.
+    
     generateSequence() {
         // Initialize the sequence array
         this.sequence = [];
@@ -142,11 +103,9 @@ class Game {
         this.randomizeSequence();
     }
 
-    /**
-     * Randomizes the order of buttons and selects a subset based on the game's sequence length.
-     * This is done using the Fisher-Yates (aka Knuth) Shuffle algorithm.
-     * The shuffled subset is stored in this.sequenceButtons.
-     */
+     // Randomizes the order of buttons and selects a subset based on the game's sequence length.
+     // This is done using the Fisher-Yates (aka Knuth) Shuffle algorithm.
+     // The shuffled subset is stored in this.sequenceButtons.
     randomizeSequence() {
         // Create a copy of the buttons array to shuffle
         const shuffledButtons = this.buttons.slice();
@@ -161,16 +120,16 @@ class Game {
         }
 
         // Select the first 'sequence.length' buttons from the shuffled array
-        this.sequenceButtons = shuffledButtons.slice(0, this.sequence.length);
+        this.sequenceButtons = shuffledButtons.slice(0, this.level);
     }
 
-    /**
-     * Displays the sequence of numbers on the buttons.
-     * This is done by setting the text content of each button in the sequence
-     * to the corresponding number in the sequence.
-     * The first button in the sequence also has an event listener that clears
-     * the text content of all the buttons in the sequence when it is clicked.
-     */
+    
+     // Displays the sequence of numbers on the buttons.
+     // This is done by setting the text content of each button in the sequence
+     // to the corresponding number in the sequence.
+     // The first button in the sequence also has an event listener that clears
+     // the text content of all the buttons in the sequence when it is clicked.
+     
     displaySequence() {
         for (let i = 0; i < this.sequence.length; i++) {
             // Set the text content of each button in the sequence
@@ -197,13 +156,11 @@ class Game {
      */
     addEventListeners() {
         for (let i = 0; i < this.buttons.length; i++) {
-            // Add an event listener to each button
+                // Add an event listener to each button
             this.buttons[i].addEventListener('click', (event) => {
                 // Get the index of the button that was clicked
                 const clickedButtonIndex = this.sequenceButtons.indexOf(this.buttons[i]);
 
-                // Check if the sequence has been fully recalled
-                if (this.recallSequence.length < this.sequence.length) {
                     // If the sequence has not been fully recalled, check if the clicked button is the next one in the sequence
                     if (clickedButtonIndex === this.recallSequence.length) {
                         // If it is, add the clicked button to the recalled sequence
@@ -224,7 +181,7 @@ class Game {
                         this.recallSequence = [];
                     }
                 }
-            });
+            );
         }
     }
 }
